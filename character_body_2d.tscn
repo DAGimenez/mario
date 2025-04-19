@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb02ixethapwc"]
+[gd_scene load_steps=15 format=3 uid="uid://bb02ixethapwc"]
 
 [ext_resource type="Texture2D" uid="uid://bctjej6wv3dj7" path="res://icon.svg" id="1_44nhp"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_epe6q"]
 [ext_resource type="Texture2D" uid="uid://d44llco4tuc5" path="res://mario5.png" id="3_qvu70"]
+[ext_resource type="AudioStream" uid="uid://det6qtrtcs0eo" path="res://Sonido - Salto de Mario Bros.mp3" id="4_tn0gx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blphy"]
 size = Vector2(60, 44.8529)
@@ -31,6 +32,14 @@ region = Rect2(189, 0, 27, 94)
 atlas = ExtResource("3_qvu70")
 region = Rect2(216, 0, 27, 94)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq2bq"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(81, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8rhk"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(54, 0, 27, 94)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_q0cdk"]
 animations = [{
 "frames": [{
@@ -54,17 +63,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"caminata",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq2bq")
+}],
 "loop": true,
 "name": &"planeacion",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8rhk")
+}],
 "loop": true,
 "name": &"salto",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Mario" type="CharacterBody2D"]
@@ -86,6 +101,7 @@ shape = SubResource("RectangleShape2D_blphy")
 position = Vector2(105, -1)
 scale = Vector2(2.7037, 2.0266)
 sprite_frames = SubResource("SpriteFrames_q0cdk")
-animation = &"caminata"
-frame = 1
-frame_progress = 0.95111
+animation = &"planeacion"
+
+[node name="sonidosalto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tn0gx")

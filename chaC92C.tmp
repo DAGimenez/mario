@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://bb02ixethapwc"]
+
+[ext_resource type="Texture2D" uid="uid://bctjej6wv3dj7" path="res://icon.svg" id="1_44nhp"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_epe6q"]
+[ext_resource type="Texture2D" uid="uid://d44llco4tuc5" path="res://mario5.png" id="3_qvu70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blphy"]
+size = Vector2(60, 44.8529)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nssy5"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(0, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esb4p"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(108, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cl8i"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(135, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yp2n"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(162, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxb66"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(189, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pea4f"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(216, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq2bq"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(81, 0, 27, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8rhk"]
+atlas = ExtResource("3_qvu70")
+region = Rect2(54, 0, 27, 94)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0cdk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nssy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esb4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cl8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yp2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxb66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pea4f")
+}],
+"loop": true,
+"name": &"caminata",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq2bq")
+}],
+"loop": true,
+"name": &"planeacion",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8rhk")
+}],
+"loop": true,
+"name": &"salto",
+"speed": 10.0
+}]
+
+[node name="Mario" type="CharacterBody2D"]
+position = Vector2(424, 213)
+script = ExtResource("1_epe6q")
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(107, 44)
+scale = Vector2(0.498781, 0.498501)
+texture = ExtResource("1_44nhp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(107, 44.5)
+scale = Vector2(1, 1.36)
+shape = SubResource("RectangleShape2D_blphy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(105, -1)
+scale = Vector2(2.7037, 2.0266)
+sprite_frames = SubResource("SpriteFrames_q0cdk")
+animation = &"planeacion"
